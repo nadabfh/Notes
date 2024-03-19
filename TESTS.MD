@@ -1,21 +1,38 @@
-## Cypress et tests bout en bout (`e2e`)
+# Testing in PolyNotes
 
-La bibliothèque <a href="https://www.cypress.io/">Cypress</a> est utilisée dans ce travail pratique, tout comme le TP1. Pour exécuter l'ensemble des tests, vous avez la possibilité d'utiliser `npm run test` ou `npm run test:headless`. Si vous décidez d'utiliser `npm run test`, vous devriez voir une nouvelle fenêtre apparaître.
+## Overview
 
-Les tests de bout en bout vous sont fournis dans le répertoire [e2e](./site-web/cypress/e2e/) pour vous aider à compléter votre travail. Les tests fournis sont les suivants :
+In PolyNotes, we ensure the reliability and quality of our application through extensive testing using [Cypress](https://www.cypress.io/) for end-to-end (E2E) tests and [Jest](https://jestjs.io/) for unit testing. Follow the instructions below to run these tests.
 
-- [Index](./site-web/cypress/e2e/index.cy.js) : suite de tests pour la page principale du site et l'interaction avec les éléments de la page.
-- [Creation](./site-web/cypress/e2e/creation.cy.js) : suite de tests pour création d'une nouvelle note à travers le formulaire dédié.
-- [Interaction](./site-web/cypress/e2e/noteInteraction.cy.js) : suite de tests pour l'interaction avec les icônes de chaque note de la page principale.
-- [Détails](./site-web/cypress/e2e/noteDetails.cy.js) : suite de tests pour la page de détails d'une note.
-- [Système](./site-web/cypress/e2e/e2e.cy.js) : test système d'une séquence d'actions principales allant de la création d'une note jusqu'à la modification de celle-ci.
+## Cypress End-to-End (E2E) Tests
 
-**Note** : les tests ont une certaine flexibilité. Les tests fournis ne couvrent pas 100% des requis du TP. Certains éléments seront évalués manuellement.
+Cypress is used for E2E testing to simulate real user scenarios and interactions within the application.
 
-## Jest et tests unitaires
+### Running E2E Tests
 
-La bibliothèque <a href="https://jestjs.io/">Jest</a> est également utilisée dans ce travail pratique. Pour exécuter les tests unitaires de jest, vous pouvez utiliser la commande `npm run unit-test` qui va exécuter vos tests dans le terminal.
+**Interactive Mode with UI:**
+`npm run test` This opens the Cypress Test Runner, allowing you to watch the tests as they run.
+**Headless Mode:**
+`npm run test:headless`
 
-Contrairement aux tests de bout en bout qui vous sont fournis, vous êtes responsables de la complétion des tests unitaires. Vous devez tester la classe `NoteEditor` (juste la classe et non les autres fonctions du fichier) à l'aide de tests à implémenter dans le fichier [noteEditor.spec.js](./site-web/jest/noteEditor.spec.js).
+For CI/CD pipelines or for a faster test run, this mode runs tests in the command line without opening a browser window.
 
-**Rappel** : vous devez utiliser les notions de `Mock`, `Stub` et `Spy` pour bien implémenter vos tests **unitaires**. Vous serez évalués sur la pertinence et qualité de vos tests. Tous les tests implémentés doivent passer lors de la remise.
+E2E tests are located in the `e2e` directory and include tests for:
+- The main page interactions
+- Creating new notes
+- Interacting with existing notes
+- Detail view of notes
+- A full system test simulating user actions from note creation to modification
+
+Note: The provided tests are comprehensive but do not cover 100% of the application. Some manual review may be required.
+
+## Jest Unit Tests
+
+Jest is utilized for unit testing, focusing on the isolated testing of individual components to ensure correct functionality.
+
+### Running Unit Tests
+
+To execute the Jest unit tests: `npm run unit-test` : 
+This command runs all unit tests defined in the project and outputs the results to the terminal.
+
+Unit testing in this project is primarily focused on the `NoteEditor` class. You are responsible for writing comprehensive tests for this class, which can be found in `noteEditor.spec.js`. Utilize mocks, stubs, and spies to effectively test the class in isolation.
